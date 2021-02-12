@@ -1,24 +1,30 @@
-<template>
-  <div class="home">
-    <div class="row">
-      <div class="col-4">
+²<template>
+  <b-container class="home">
+    <b-row>
+      <b-col cols="4">
         <Clock
           :parentData="myData"
           v-on:childToParent="onChildClick"
           v-on:increment="counter++"
         ></Clock>
         <p>{{ counter }}</p>
-      </div>
-      <div class="col-8"></div>
-    </div>
-  </div>
+      </b-col>
+      <b-col cols="8">
+        <Shop/>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
 import Clock from "../components/Clock.vue";
+import Shop from "../components/Shop/Shop.vue";
 
 export default {
-  components: { Clock },
+  components: {
+    Clock,
+    Shop
+  },
   data() {
     return {
       fromChild: "",

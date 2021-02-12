@@ -33,23 +33,22 @@
           </button>
         </form>
       </div>
-      </nav>
-    <router-view />
+    </nav>
+   <router-view></router-view>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase'
-
+import firebase from "firebase";
 export default {
   data() {
     return {
       user: null,
-      testDocument: [],
-    }
+      testDocument: []
+    };
   },
   created() {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.user = user;
         console.log(user.uid);
@@ -68,9 +67,9 @@ export default {
             this.$router.push("/");
           });
         });
-    },
-  },
-}
+    }
+  }
+};
 </script>
 
 <style>

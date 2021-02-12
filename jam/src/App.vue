@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div>
-          <a class="navbar-brand" href="/">Epitech JAM #1</a>
+          <a class="navbar-brand" href="/">A journey through the time</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">

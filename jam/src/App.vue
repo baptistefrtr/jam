@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #2c2f33">
         <div>
-          <a class="navbar-brand" href="/">A journey through the time</a>
+          <a class="navbar-brand" href="/" style="color: #ffffff">A journey through the time</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">

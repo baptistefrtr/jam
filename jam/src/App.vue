@@ -1,12 +1,77 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div>
+          <a class="navbar-brand" href="/">Epitech JAM #1</a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <router-link class="nav-link" to="/"></router-link>
+          </li>
+        </ul>
+        <form v-if="user == null" class="form-inline my-2 my-lg-0">
+          <router-link class="nav-link" to="/login">Sign In</router-link>
+          <router-link class="nav-link" to="/register">Register</router-link>
+        </form>
+        <form v-if="user != null" class="form-inline my-2 my-lg-0">
+          <router-link class="nav-link" to="/profile">Profile</router-link>
+          <button type="button" class="btn btn-danger" @click="logOut()">
+            <svg
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              class="bi bi-person-dash-fill"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5-.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+      </nav>
     <router-view />
   </div>
 </template>
+
+<script>
+import firebase from 'firebase'
+
+export default {
+  data() {
+    return {
+      user: null,
+      testDocument: [],
+    }
+  },
+  created() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user;
+        console.log(user.uid);
+      } else {
+        this.user = null;
+      }
+    });
+  },
+  methods: {
+    logOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          firebase.auth().onAuthStateChanged(() => {
+            this.$router.push("/");
+          });
+        });
+    },
+  },
+}
+</script>
 
 <style>
 #app {

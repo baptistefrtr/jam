@@ -3,7 +3,6 @@
     <b-row>
       <b-col cols="4">
         <Clock
-          :parentData="myData"
           v-on:childToParent="onChildClick"
           v-on:increment="counter++"
         ></Clock>

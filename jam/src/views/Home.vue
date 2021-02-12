@@ -82,8 +82,8 @@ export default {
           .get()
           .then((doc) => {
             storeLib.push(doc.data());
-            this.userVerified = user.emailVerified;
             this.testDocument = storeLib;
+            this.counter = storeLib[0].clicks;
           });
       } else {
         this.user = null;

@@ -34,6 +34,7 @@ export default {
   },
   data() {
     return {
+      testDocument: null,
       counter: 0,
       pastMaterial: {
         flint: 0,
@@ -59,9 +60,6 @@ export default {
           clicks: this.counter,
           time: this.counter,
           past: this.pastMaterial,
-        })
-        .then(() => {
-          location.reload();
         });
     },
     reloadPage() {

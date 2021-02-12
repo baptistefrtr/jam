@@ -1,5 +1,4 @@
-²<template>
-  <b-container class="home">
+<template>
     <b-row>
       <b-col cols="4">
         <Clock
@@ -12,7 +11,6 @@
         <Shop/>
       </b-col>
     </b-row>
-  </b-container>
 </template>
 
 <script>

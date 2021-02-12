@@ -34,7 +34,6 @@ export default {
   },
   data() {
     return {
-      fromChild: "",
       counter: 0,
       pastMaterial: {
         flint: 0,
@@ -56,7 +55,6 @@ export default {
       db.collection("users")
         .doc(this.user.uid)
         .set({
-          userVerified: this.userVerified,
           createdID: this.user.uid,
           clicks: this.counter,
           time: this.counter,

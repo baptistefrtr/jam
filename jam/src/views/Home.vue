@@ -72,6 +72,16 @@ export default {
     onChildClick(value) {
       this.fromChild = value;
     },
+    getUpgradeLevel(item) {
+      let level = 0;
+
+      for (let i = 0; i !== item.upgrades.length; i++) {
+        if (item.upgrades[i].locked === false) {
+          level++
+        }
+      }
+      return level;
+    },
     editUser() {
       const db = this.$firebase.firestore();
       db.collection("users").doc(this.user.uid).get().then(snapshot => {
@@ -89,6 +99,14 @@ export default {
                   town: this.userData.items[5].amount,
                   wheel: this.userData.items[3].amount,
                   writing: this.userData.items[4].amount
+                },
+                upgrade: {
+                  flint: this.getUpgradeLevel(this.userData.items[0]),
+                  fire: this.getUpgradeLevel(this.userData.items[1]),
+                  bow: this.getUpgradeLevel(this.userData.items[2]),
+                  wheel: this.getUpgradeLevel(this.userData.items[3]),
+                  writing: this.getUpgradeLevel(this.userData.items[4]),
+                  town: this.getUpgradeLevel(this.userData.items[5])
                 }
               })
         } else
@@ -176,17 +194,17 @@ export default {
                   multiplier: 1,
                   upgrades: [
                      {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["flint"] <= 0),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["flint"] <= 1),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["flint"] <= 2),
                       multiplier: 1.5,
                       price: 300
                     }
@@ -203,17 +221,17 @@ export default {
                   multiplier: 1,
                   upgrades: [
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["fire"] <= 0),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["fire"] <= 1),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["fire"] <= 2),
                       multiplier: 1.5,
                       price: 300
                     }
@@ -230,17 +248,17 @@ export default {
                   multiplier: 1,
                   upgrades: [
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["bow"] <= 0),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["bow"] <= 1),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["bow"] <= 2),
                       multiplier: 1.5,
                       price: 300
                     }
@@ -257,17 +275,17 @@ export default {
                   multiplier: 1,
                   upgrades: [
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["wheel"] <= 0),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["wheel"] <= 1),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["wheel"] <= 2),
                       multiplier: 1.5,
                       price: 300
                     }
@@ -284,17 +302,17 @@ export default {
                   multiplier: 1,
                   upgrades: [
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["writing"] <= 0),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["writing"] <= 1),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["writing"] <= 2),
                       multiplier: 1.5,
                       price: 300
                     }
@@ -311,17 +329,17 @@ export default {
                   multiplier: 1,
                   upgrades: [
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["town"] <= 0),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["town"] <= 1),
                       multiplier: 1.5,
                       price: 300
                     },
                     {
-                      locked: true,
+                      locked: (storeLib[0].upgrade["town"] <= 3),
                       multiplier: 1.5,
                       price: 300
                     }

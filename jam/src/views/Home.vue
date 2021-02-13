@@ -96,15 +96,15 @@ export default {
               .doc(this.user.uid)
               .set({
                 createdID: this.user.uid,
-                clicks: this.userData.clicks,
-                time: this.userData.time,
+                clicks: 0,
+                time: 0,
                 past:  {
-                  flint: this.userData.items[0].amount,
-                  fire: this.userData.items[1].amount,
-                  bow: this.userData.items[2].amount,
-                  town: this.userData.items[5].amount,
-                  wheel: this.userData.items[3].amount,
-                  writing: this.userData.items[4].amount
+                  flint: 0,
+                  fire: 0,
+                  bow: 0,
+                  town: 0,
+                  wheel: 0,
+                  writing: 0
                 }
               })
       });

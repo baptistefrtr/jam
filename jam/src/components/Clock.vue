@@ -27,8 +27,9 @@ export default {
 
 <style scoped>
 
-.blue{
-  display:inline-block;
+.blue
+{
+    display:inline-block;
     border:0;
     width:40%;
     position: relative;
@@ -39,11 +40,12 @@ export default {
     -moz-transition: all 100ms ease-in;
     -moz-transform: scale(1);
     transition: all 100ms ease-in;
-    transform: scale(1.05); 
-}
+    transform: scale(1);
 
-.blue:hover {
-  z-index: 2;
+}
+.blue:hover
+{
+    z-index: 2;
     -webkit-transition: all 100ms ease-in;
     -webkit-transform: scale(1.5);
     -ms-transition: all 100ms ease-in;

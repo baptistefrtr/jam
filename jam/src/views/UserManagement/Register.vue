@@ -91,9 +91,8 @@ export default {
     googleLogin() {
         const provider = new firebase.auth.GoogleAuthProvider();
 
-        firebase.auth().signInWithRedirect(provider).then(result => {
-            this.$router.replace("/");
-            console.log(result);
+        firebase.auth().signInWithRedirect(provider).then(() => {
+            this.$router.push("/");
         });
     }
   },

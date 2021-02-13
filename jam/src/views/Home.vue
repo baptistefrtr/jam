@@ -3,9 +3,11 @@
     <b-col cols="4" class="back" style="padding-top: 10%">
       <b-row>
         <b-col cols="3"></b-col>
-        <b-col cols="6">
+        <b-col cols="6" v-if="userData">
           <h3 style="color: white; background: rgba(0, 0, 0, 0.5)">
-            {{ counter }}
+            {{ Intl.NumberFormat().format(userData.time) }} time
+            <br>
+            per seconds: {{ Intl.NumberFormat().format(totalRemuneration())  }}
           </h3>
         </b-col>
         <b-col cols="3"></b-col>
@@ -72,9 +74,6 @@ export default {
             writing: this.userData.items[4].amount
           }
         })
-        .then(() => {
-          location.reload();
-        });
     },
     reloadPage() {
       location.reload();
@@ -84,11 +83,23 @@ export default {
       if (this.userData.time >= this.userData.items[item].price) {
         console.log("ACHAT");
         this.userData.items[item].amount++;
-        this.userData.items[item].price = Math.trunc(this.userData.items[item].price * this.userData.items[item].inflation);
         this.userData.time -= this.userData.items[item].price;
-
+        this.userData.items[item].price = Math.trunc(this.userData.items[item].price * this.userData.items[item].inflation);
+        this.userData.items[item].remuneration += this.userData.items[item].baseRemuneration;
       } else
         console.log("TPAUVRE");
+    },
+    totalRemuneration() {
+      var remuneration = 0;
+
+      for (let i = 0; i < this.userData.items.length; i++) {
+        remuneration += this.userData.items[i].remuneration;
+      }
+
+      return remuneration;
+    },
+    payday() {
+      this.userData.time += this.totalRemuneration();
     }
   },
   mounted() {
@@ -112,6 +123,8 @@ export default {
                   amount: storeLib[0].past["flint"],
                   basePrice: 10,
                   inflation: 1.25,
+                  baseRemuneration: 3,
+                  remuneration: Math.trunc(3 * storeLib[0].past["flint"]),
                   price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["flint"]))
                 },
                 {
@@ -119,6 +132,8 @@ export default {
                   amount: storeLib[0].past["fire"],
                   basePrice: 10,
                   inflation: 1.25,
+                  baseRemuneration: 3,
+                  remuneration: Math.trunc(3 * storeLib[0].past["fire"]),
                   price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["fire"]))
                 },
                 {
@@ -126,6 +141,8 @@ export default {
                   amount: storeLib[0].past["bow"],
                   basePrice: 10,
                   inflation: 1.25,
+                  baseRemuneration: 3,
+                  remuneration: Math.trunc(3 * storeLib[0].past["bow"]),
                   price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["bow"]))
                 },
                 {
@@ -133,6 +150,8 @@ export default {
                   amount: storeLib[0].past["wheel"],
                   basePrice: 10,
                   inflation: 1.25,
+                  baseRemuneration: 3,
+                  remuneration: Math.trunc(3 * storeLib[0].past["wheel"]),
                   price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["wheel"]))
                 },
                 {
@@ -140,6 +159,8 @@ export default {
                   amount: storeLib[0].past["writing"],
                   basePrice: 10,
                   inflation: 1.25,
+                  baseRemuneration: 3,
+                  remuneration: Math.trunc(3 * storeLib[0].past["writing"]),
                   price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["writing"]))
                 },
                 {
@@ -147,6 +168,8 @@ export default {
                   amount: storeLib[0].past["town"],
                   basePrice: 10,
                   inflation: 1.25,
+                  baseRemuneration: 3,
+                  remuneration: Math.trunc(3 * storeLib[0].past["town"]),
                   price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["town"]))
                 }
               ]
@@ -158,6 +181,7 @@ export default {
       }
     });
     setInterval(() => this.editUser(), 1 * 600000);
+    setInterval(() => this.payday(), 1000);
   },
 };
 </script>

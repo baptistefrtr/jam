@@ -85,6 +85,14 @@ export default {
                   town: 0,
                   wheel: 0,
                   writing: 0
+                },
+                upgrade: {
+                  flint: 0,
+                  fire: 0,
+                  bow: 0,
+                  wheel: 0,
+                  writing: 0,
+                  town: 0
                 }
               })
         .then(() => {

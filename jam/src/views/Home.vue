@@ -2,6 +2,16 @@
   <b-row>
     <b-col cols="4" class="back" style="padding-top: 10%">
       <b-row>
+        <b-alert
+      style="position: absolute; top: 95%; left: 5%"
+      :show="dismissCountDown"
+      dismissible
+      variant="warning"
+      @dismissed="dismissCountDown=0"
+      @dismiss-count-down="countDownChanged"
+    >
+      Game saved
+    </b-alert>
         <b-col cols="3"></b-col>
         <b-col cols="6" v-if="userData">
           <h3 style="color: white; background: rgba(0, 0, 0, 0.5)">
@@ -19,7 +29,7 @@
     </b-col>
     <b-col cols="8">
       <Shop v-if="this.userData != null" :userData="this.userData" @buy="buy" />
-      <button type="button" class="btn btn-primary" @click="editUser()">
+      <button type="button" class="btn btn-primary" @click="editUser() && showAlert()">
         Edit user
       </button>
     </b-col>
@@ -38,6 +48,8 @@ export default {
   },
   data() {
     return {
+      dismissSecs: 5,
+      dismissCountDown: 0,
       fromChild: "",
       counter: 0,
       userData: null,
@@ -54,6 +66,9 @@ export default {
     };
   },
   methods: {
+    countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown
+    },
     onChildClick(value) {
       this.fromChild = value;
     },
@@ -93,6 +108,7 @@ export default {
                 }
               })
       });
+      this.dismissCountDown = this.dismissSecs;
     },
     reloadPage() {
       location.reload();

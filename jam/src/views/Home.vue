@@ -94,7 +94,7 @@ export default {
         } else
           db.collection("users")
               .doc(this.user.uid)
-              .push({
+              .set({
                 createdID: this.user.uid,
                 clicks: this.userData.clicks,
                 time: this.userData.time,

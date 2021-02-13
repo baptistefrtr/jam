@@ -14,7 +14,7 @@
       </b-row>
       <Clock
         v-on:childToParent="onChildClick"
-        v-on:increment="counter++"
+        v-on:increment="counter++ && userData.time++ && userData.clicks++"
       ></Clock>
     </b-col>
     <b-col cols="8">
@@ -63,7 +63,7 @@ export default {
         .doc(this.user.uid)
         .update({
           createdID: this.user.uid,
-          clicks: this.counter,
+          clicks: this.userData.clicks,
           time: this.userData.time,
           past:  {
             flint: this.userData.items[0].amount,

@@ -10,6 +10,7 @@ export default {
     data() {
         return {
             counter: 0,
+            show: true,
         }
   },
   methods: {

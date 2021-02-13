@@ -28,7 +28,7 @@
       ></Clock>
     </b-col>
     <b-col cols="8">
-      <Shop v-if="this.userData != null" :userData="this.userData" @buy="buy" />
+      <Shop v-if="this.userData != null" :userData="this.userData" @buyItem="buyItem" @buyUpgrade="buyUpgrade" />
       <button type="button" class="btn btn-primary" @click="editUser() && showAlert()">
         Edit user
       </button>
@@ -113,7 +113,7 @@ export default {
     reloadPage() {
       location.reload();
     },
-    buy(item) {
+    buyItem(item) {
 
       if (this.userData.time >= this.userData.items[item].price) {
         console.log("ACHAT");
@@ -124,11 +124,23 @@ export default {
       } else
         console.log("TPAUVRE");
     },
+    buyUpgrade(value) {
+      for (let i = 0; i !== this.userData.items[value].upgrades[i]; i++) {
+        if (this.userData.items[value].upgrades[i].locked && this.userData.time >= this.userData.items[value].upgrades[i].price) {
+          console.log("ACHAAAAt " + i);
+          console.log(this.userData.items[value].name);
+          this.userData.items[value].upgrades[i].locked = false;
+          this.userData.items[value].multiplier *= this.userData.items[value].upgrades[i].multiplier;
+          this.userData.time -= this.userData.items[value].upgrades[i].price;
+          break;
+        }
+      }
+    },
     totalRemuneration() {
       var remuneration = 0;
 
       for (let i = 0; i < this.userData.items.length; i++) {
-        remuneration += this.userData.items[i].remuneration;
+        remuneration += this.userData.items[i].remuneration * this.userData.items[i].multiplier;
       }
 
       return remuneration;
@@ -160,7 +172,25 @@ export default {
                   inflation: 1.25,
                   baseRemuneration: 3,
                   remuneration: Math.trunc(3 * storeLib[0].past["flint"]),
-                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["flint"]))
+                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["flint"])),
+                  multiplier: 1,
+                  upgrades: [
+                     {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    }
+                  ]
                 },
                 {
                   name: "Fire",
@@ -169,7 +199,25 @@ export default {
                   inflation: 1.25,
                   baseRemuneration: 3,
                   remuneration: Math.trunc(3 * storeLib[0].past["fire"]),
-                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["fire"]))
+                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["fire"])),
+                  multiplier: 1,
+                  upgrades: [
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    }
+                  ]
                 },
                 {
                   name: "Bow",
@@ -178,7 +226,25 @@ export default {
                   inflation: 1.25,
                   baseRemuneration: 3,
                   remuneration: Math.trunc(3 * storeLib[0].past["bow"]),
-                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["bow"]))
+                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["bow"])),
+                  multiplier: 1,
+                  upgrades: [
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    }
+                  ]
                 },
                 {
                   name: "Wheel",
@@ -187,7 +253,25 @@ export default {
                   inflation: 1.25,
                   baseRemuneration: 3,
                   remuneration: Math.trunc(3 * storeLib[0].past["wheel"]),
-                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["wheel"]))
+                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["wheel"])),
+                  multiplier: 1,
+                  upgrades: [
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    }
+                  ]
                 },
                 {
                   name: "Writing",
@@ -196,7 +280,25 @@ export default {
                   inflation: 1.25,
                   baseRemuneration: 3,
                   remuneration: Math.trunc(3 * storeLib[0].past["writing"]),
-                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["writing"]))
+                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["writing"])),
+                  multiplier: 1,
+                  upgrades: [
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    }
+                  ]
                 },
                 {
                   name: "Town",
@@ -205,7 +307,25 @@ export default {
                   inflation: 1.25,
                   baseRemuneration: 3,
                   remuneration: Math.trunc(3 * storeLib[0].past["town"]),
-                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["town"]))
+                  price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["town"])),
+                  multiplier: 1,
+                  upgrades: [
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    },
+                    {
+                      locked: true,
+                      multiplier: 1.5,
+                      price: 300
+                    }
+                  ]
                 }
               ]
             };

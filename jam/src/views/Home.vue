@@ -157,8 +157,8 @@ export default {
         this.user = null;
       }
     });
+    setInterval(() => this.editUser(), 1 * 600000);
   },
-  created() {}
 };
 </script>
 

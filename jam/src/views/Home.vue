@@ -59,21 +59,40 @@ export default {
     },
     editUser() {
       const db = this.$firebase.firestore();
-      db.collection("users")
-        .doc(this.user.uid)
-        .update({
-          createdID: this.user.uid,
-          clicks: this.userData.clicks,
-          time: this.userData.time,
-          past:  {
-            flint: this.userData.items[0].amount,
-            fire: this.userData.items[1].amount,
-            bow: this.userData.items[2].amount,
-            town: this.userData.items[5].amount,
-            wheel: this.userData.items[3].amount,
-            writing: this.userData.items[4].amount
-          }
-        })
+      db.collection("users").doc(this.user.uid).get().then(snapshot => {
+        if (snapshot.exists) {
+          db.collection("users")
+              .doc(this.user.uid)
+              .update({
+                createdID: this.user.uid,
+                clicks: this.userData.clicks,
+                time: this.userData.time,
+                past:  {
+                  flint: this.userData.items[0].amount,
+                  fire: this.userData.items[1].amount,
+                  bow: this.userData.items[2].amount,
+                  town: this.userData.items[5].amount,
+                  wheel: this.userData.items[3].amount,
+                  writing: this.userData.items[4].amount
+                }
+              })
+        } else
+          db.collection("users")
+              .doc(this.user.uid)
+              .push({
+                createdID: this.user.uid,
+                clicks: this.userData.clicks,
+                time: this.userData.time,
+                past:  {
+                  flint: this.userData.items[0].amount,
+                  fire: this.userData.items[1].amount,
+                  bow: this.userData.items[2].amount,
+                  town: this.userData.items[5].amount,
+                  wheel: this.userData.items[3].amount,
+                  writing: this.userData.items[4].amount
+                }
+              })
+      });
     },
     reloadPage() {
       location.reload();

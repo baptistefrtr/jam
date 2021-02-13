@@ -165,7 +165,15 @@ export default {
     },
     payday() {
       this.userData.time += this.totalRemuneration();
-    }
+    },
+    updateMultiplier(items) {
+      for (let i = 0; i !== items.length; i++) {
+        for (let y = 0; y !== items[i].upgrades.length; y++) {
+          if (items[i].upgrades[y].locked === false)
+            items[i].multiplier *= items[i].upgrades[y].multiplier;
+        }
+      }
+    },
   },
   mounted() {
     firebase.auth().onAuthStateChanged(user => {
@@ -339,7 +347,7 @@ export default {
                       price: 300
                     },
                     {
-                      locked: (storeLib[0].upgrade["town"] <= 3),
+                      locked: (storeLib[0].upgrade["town"] <= 2),
                       multiplier: 1.5,
                       price: 300
                     }
@@ -347,6 +355,7 @@ export default {
                 }
               ]
             };
+            this.updateMultiplier(this.userData.items);
             this.counter = storeLib[0].clicks;
           });
       } else {

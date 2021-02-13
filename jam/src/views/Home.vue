@@ -143,7 +143,7 @@ export default {
         remuneration += this.userData.items[i].remuneration * this.userData.items[i].multiplier;
       }
 
-      return remuneration;
+      return Math.trunc(remuneration);
     },
     payday() {
       this.userData.time += this.totalRemuneration();

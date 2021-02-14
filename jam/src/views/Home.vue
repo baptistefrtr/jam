@@ -650,18 +650,18 @@ export default {
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["games"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 430000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["games"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 560000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["games"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 890000000000
                       }
                     ]
                   },

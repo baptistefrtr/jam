@@ -72,10 +72,8 @@ export default {
     googleLogin() {
         const provider = new firebase.auth.GoogleAuthProvider();
 
-        firebase.auth().signInWithRedirect(provider).then(result => {
-            this.$router.replace("/");
-            console.log(result);
-        });
+        firebase.auth().signInWithRedirect(provider).then(
+            this.$initBdd());
     }
   },
   mounted() {
@@ -88,6 +86,16 @@ export default {
       signInOptions: [firebase.auth.FacebookAuthProvider.PROVIDER_ID],
     };
     ui.start("#firebaseui-auth-container", uiConfig);
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+        console.log(user.uid);
+        this.initBdd();
+      } else {
+        this.user = null;
+      }
+    });
   },
 };
 </script>

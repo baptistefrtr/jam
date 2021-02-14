@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #2c2f33">
         <div>
-          <a class="navbar-brand" style="color: #ffffff" @click="initBdd()">A journey through the time</a>
+          <a class="navbar-brand" style="color: #ffffff" href="/">A journey through the time</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">

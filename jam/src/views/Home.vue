@@ -17,14 +17,14 @@
           <h3 style="color: white; background: rgba(0, 0, 0, 0.5)">
             {{ Intl.NumberFormat().format(Math.trunc(userData.time)) }} time
             <br>
-            per seconds: {{ Intl.NumberFormat().format(totalRemuneration())  }}
+            per second: {{ Intl.NumberFormat().format(totalRemuneration())  }}
           </h3>
         </b-col>
         <b-col cols="3"></b-col>
       </b-row>
       <Clock
         v-on:childToParent="onChildClick"
-        v-on:increment="counter++ && userData.time++ && userData.clicks++"
+        v-on:increment="counter++ && (userData.time += userData.click.efficiency) && userData.clicks++"
       ></Clock>
     </b-col>
 
@@ -34,7 +34,7 @@
         <b-img :src="require('@/assets/woodSide.png')" v-bind:style="{objectFit: 'cover', height: '100vh'}"
         ></b-img></b-col>
         <b-col>
-      <Shop v-if="this.userData != null" :userData="this.userData" @buyItem="buyItem" @buyUpgrade="buyUpgrade" />
+      <Shop v-if="this.userData != null" :userData="this.userData" @buyItem="buyItem" @buyUpgrade="buyUpgrade" @upgradeClick="upgradeClick" />
       <button type="button" class="btn btn-primary" @click="editUser() && showAlert()">
         Edit user
       </button>
@@ -99,6 +99,7 @@ export default {
             createdID: this.user.uid,
             clicks: this.userData.clicks,
             time: this.userData.time,
+            clickLevel: this.userData.click.level,
             past: {
               flint: this.userData.items[0].amount,
               fire: this.userData.items[1].amount,
@@ -178,6 +179,16 @@ export default {
         }
       }
     },
+    upgradeClick() {
+      console.log(this.userData.time);
+      console.log(this.userData.click.price);
+      if (this.userData.time >= this.userData.click.price) {
+        this.userData.time -= this.userData.click.price
+        this.userData.click.level++;
+        this.userData.click.efficiency = 1 * (Math.pow(1.5, this.userData.click.level));
+        this.userData.click.price *= this.userData.click.inflation;
+      }
+    },
     totalRemuneration() {
       var remuneration = 0;
 
@@ -214,6 +225,13 @@ export default {
               this.userData = {
                 clicks: storeLib[0].clicks,
                 time: storeLib[0].time,
+                click: {
+                  level: storeLib[0].clickLevel,
+                  basePrice: 30,
+                  inflation: 2.5,
+                  efficiency: 1 * (Math.pow(1.5, storeLib[0].clickLevel)),
+                  price: 30 * (Math.pow(2.5, storeLib[0].clickLevel)),
+                },
                 items: [
                   {
                     name: "Flint",
@@ -785,6 +803,8 @@ export default {
                 ]
               };
               console.log(this.userData);
+              console.log(this.userData.click.level);
+              console.log(this.userData.click.efficiency);
               this.updateMultiplier(this.userData.items);
               this.counter = storeLib[0].clicks;
             });

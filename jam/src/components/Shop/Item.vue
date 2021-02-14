@@ -10,14 +10,18 @@
       </b-row>
     </b-col>
     <b-col v-if="this.nbItem">
-      Amount {{ Intl.NumberFormat().format(this.nbItem) }}
+      <b-row>Amount {{ Intl.NumberFormat().format(this.nbItem) }}</b-row>
+      <b-row>
+        {{ Intl.NumberFormat().format(this.remuneration) }} Time per second
+      </b-row>
     </b-col>
+
   </b-row>
 </template>
 
 <script>
 export default {
-  props: ["item", "nbItem", "price"],
+  props: ["item", "nbItem", "price", "remuneration"],
   name: "Item"
 };
 </script>

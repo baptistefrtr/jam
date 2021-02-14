@@ -109,6 +109,7 @@ export default {
                 createdID: this.user.uid,
                 clicks: 0,
                 time: 0,
+                clickLevel: 0,
                 past:  {
                   flint: 0,
                   fire: 0,

@@ -1,5 +1,5 @@
 <template>
-  <b-row>
+  <b-row style="max-width: 99.9vw">
     <b-col cols="4" class="back" style="padding-top: 10%">
       <b-row>
         <b-alert
@@ -27,11 +27,19 @@
         v-on:increment="counter++ && userData.time++ && userData.clicks++"
       ></Clock>
     </b-col>
-    <b-col cols="8">
+
+    <b-col cols="8" class="shop">
+      <b-row>
+        <b-col md="auto" style="padding: 0">
+        <b-img :src="require('@/assets/woodSide.png')" v-bind:style="{objectFit: 'cover', height: '100vh'}"
+        ></b-img></b-col>
+        <b-col>
       <Shop v-if="this.userData != null" :userData="this.userData" @buyItem="buyItem" @buyUpgrade="buyUpgrade" />
       <button type="button" class="btn btn-primary" @click="editUser() && showAlert()">
         Edit user
       </button>
+        </b-col>
+      </b-row>
     </b-col>
   </b-row>
 </template>
@@ -375,6 +383,13 @@ export default {
 
 .back {
   background-image: url("https://i.pinimg.com/originals/af/54/2d/af542d89a7722b3ba7d078247d3314fe.gif");
-  height: 89vh;
+  height: 100vh;
+  background-size: 100vh;
+  object-fit: cover;
+}
+
+.shop {
+  background-image: url("../assets/Shop.jpg");
+  height: 100vh;
 }
 </style>

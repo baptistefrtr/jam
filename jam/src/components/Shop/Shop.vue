@@ -1,5 +1,5 @@
 <template>
-  <b-container v-if="this.userData">
+  <b-container v-if="this.userData" >
     <h1>Store</h1>
     <b-row>
       <b-col cols="6">
@@ -8,12 +8,12 @@
             <b-button
                 squared
                 block
-                variant="outline-secondary"
+                variant="light"
                 @click="buyItem(idx)"
             >
               <Item v-if="value.name === 'Flint'"
                     :item="value.name"
-                    :img="require('@/assets/past/fire.png')"
+                    :img="require('@/assets/past/Flint.png')"
                     :nbItem="value.amount"
                     :price="value.price"
               ></Item>
@@ -56,14 +56,14 @@
           <b-list-group-item style="padding: 0; border: 0;" v-for="(value, idx) in this.userData.items" :key="idx"
           >
             <Upgrade v-if="value.name === 'Flint' && value.upgrades[0].locked" :item=" value.name + ' 1'"
-                  :img="require('@/assets/past/fire.png')"
+                  :img="require('@/assets/past/Flint.png')"
                   :price="value.upgrades[0].price"
                   :index="idx"
                   @buy="buyUpgrade"
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Flint' && !value.upgrades[0].locked && value.upgrades[1].locked"
                   :item=" value.name + ' 2'"
-                  :img="require('@/assets/past/fire.png')"
+                  :img="require('@/assets/past/Flint.png')"
                   :price="value.upgrades[1].price"
                   :index="idx"
                   @buy="buyUpgrade"
@@ -71,7 +71,7 @@
             <Upgrade
                 v-else-if="value.name === 'Flint' && !value.upgrades[0].locked && !value.upgrades[1].locked && value.upgrades[1].locked"
                 :item="value.name + ' 3'"
-                :img="require('@/assets/past/fire.png')"
+                :img="require('@/assets/past/Flint.png')"
                 :price="value.upgrades[2].price"
                 :index="idx"
                 @buy="buyUpgrade"

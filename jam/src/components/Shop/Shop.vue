@@ -54,6 +54,41 @@
                     :price="value.price"
                     v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
               ></Item>
+              <Item v-if="value.name === 'Church'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Boat'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Photography'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Train'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Electricity'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
             </b-button>
           </b-list-group-item>
         </b-list-group>

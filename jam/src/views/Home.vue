@@ -15,7 +15,7 @@
         <b-col cols="3"></b-col>
         <b-col cols="6" v-if="userData">
           <h3 style="color: white; background: rgba(0, 0, 0, 0.5)">
-            {{ Intl.NumberFormat().format(userData.time) }} time
+            {{ Intl.NumberFormat().format(Math.trunc(userData.time)) }} time
             <br>
             per seconds: {{ Intl.NumberFormat().format(totalRemuneration())  }}
           </h3>
@@ -161,7 +161,7 @@ export default {
         console.log("ACHAT");
         this.userData.items[item].amount++;
         this.userData.time -= this.userData.items[item].price;
-        this.userData.items[item].price = Math.trunc(this.userData.items[item].price * this.userData.items[item].inflation);
+        this.userData.items[item].price = this.userData.items[item].price * this.userData.items[item].inflation;
         this.userData.items[item].remuneration += this.userData.items[item].baseRemuneration;
       } else
         console.log("TPAUVRE");
@@ -185,7 +185,7 @@ export default {
         remuneration += this.userData.items[i].remuneration * this.userData.items[i].multiplier;
       }
 
-      return Math.trunc(remuneration);
+      return remuneration;
     },
     payday() {
       this.userData.time += this.totalRemuneration();
@@ -219,25 +219,25 @@ export default {
                     name: "Flint",
                     amount: storeLib[0].past["flint"],
                     basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["flint"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["flint"])),
+                    inflation: 1.1,
+                    baseRemuneration: 0.1,
+                    remuneration: 0.1 * storeLib[0].past["flint"],
+                    price: 10 * Math.pow(1.1, storeLib[0].past["flint"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["flint"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 50
                       },
                       {
                         locked: (storeLib[0].upgrade["flint"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 150
                       },
                       {
                         locked: (storeLib[0].upgrade["flint"] <= 2),
-                        multiplier: 1.5,
+                        multiplier: 2,
                         price: 300
                       }
                     ]
@@ -245,389 +245,389 @@ export default {
                   {
                     name: "Fire",
                     amount: storeLib[0].past["fire"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["fire"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["fire"])),
+                    basePrice: 70,
+                    inflation: 1.1,
+                    baseRemuneration: 4,
+                    remuneration: 4 * storeLib[0].past["fire"],
+                    price: 70 * Math.pow(1.1, storeLib[0].past["fire"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["fire"] <= 0),
                         multiplier: 1.5,
-                        price: 300
+                        price: 200
                       },
                       {
                         locked: (storeLib[0].upgrade["fire"] <= 1),
                         multiplier: 1.5,
-                        price: 300
+                        price: 500
                       },
                       {
                         locked: (storeLib[0].upgrade["fire"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 4,
+                        price: 3000
                       }
                     ]
                   },
                   {
                     name: "Bow",
                     amount: storeLib[0].past["bow"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["bow"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["bow"])),
+                    basePrice: 600,
+                    inflation: 1.1,
+                    baseRemuneration: 10,
+                    remuneration: 10 * storeLib[0].past["bow"],
+                    price: 600 * Math.pow(1.1, storeLib[0].past["bow"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["bow"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 2800
                       },
                       {
                         locked: (storeLib[0].upgrade["bow"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2.5,
+                        price: 12000
                       },
                       {
                         locked: (storeLib[0].upgrade["bow"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 5,
+                        price: 40000
                       }
                     ]
                   },
                   {
                     name: "Wheel",
                     amount: storeLib[0].past["wheel"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["wheel"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["wheel"])),
+                    basePrice: 5500,
+                    inflation: 1.1,
+                    baseRemuneration: 40,
+                    remuneration: 3 * storeLib[0].past["wheel"],
+                    price: 5500 * Math.pow(1.1, storeLib[0].past["wheel"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["wheel"] <= 0),
                         multiplier: 1.5,
-                        price: 300
+                        price: 10000
                       },
                       {
                         locked: (storeLib[0].upgrade["wheel"] <= 1),
                         multiplier: 1.5,
-                        price: 300
+                        price: 30000
                       },
                       {
                         locked: (storeLib[0].upgrade["wheel"] <= 2),
                         multiplier: 1.5,
-                        price: 300
+                        price: 80000
                       }
                     ]
                   },
                   {
                     name: "Writing",
                     amount: storeLib[0].past["writing"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["writing"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["writing"])),
+                    basePrice: 40000,
+                    inflation: 1.1,
+                    baseRemuneration: 600,
+                    remuneration: 600 * storeLib[0].past["writing"],
+                    price: 40000 * Math.pow(1.1, storeLib[0].past["writing"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["writing"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 80000
                       },
                       {
                         locked: (storeLib[0].upgrade["writing"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 120000
                       },
                       {
                         locked: (storeLib[0].upgrade["writing"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 200000
                       }
                     ]
                   },
                   {
                     name: "Town",
                     amount: storeLib[0].past["town"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["town"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["town"])),
+                    basePrice: 330000,
+                    inflation: 1.1,
+                    baseRemuneration: 1800,
+                    remuneration: 1800 * storeLib[0].past["town"],
+                    price: 330000 * Math.pow(1.1, storeLib[0].past["town"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["town"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 500000
                       },
                       {
                         locked: (storeLib[0].upgrade["town"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 800000
                       },
                       {
                         locked: (storeLib[0].upgrade["town"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 1200000
                       }
                     ]
                   },
                   {
                     name: "Church",
                     amount: storeLib[0].past["church"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["church"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["church"])),
+                    basePrice: 1500000,
+                    inflation: 1.1,
+                    baseRemuneration: 4500,
+                    remuneration: 4500 * storeLib[0].past["church"],
+                    price: 1500000 * Math.pow(1.1, storeLib[0].past["church"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["church"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 2500000
                       },
                       {
                         locked: (storeLib[0].upgrade["church"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 3000000
                       },
                       {
                         locked: (storeLib[0].upgrade["church"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 3500000
                       }
                     ]
                   },
                   {
                     name: "Boat",
                     amount: storeLib[0].past["boat"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["boat"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["boat"])),
+                    basePrice: 9000000,
+                    inflation: 1.1,
+                    baseRemuneration: 12000,
+                    remuneration: 12000 * storeLib[0].past["boat"],
+                    price: 9000000 * Math.pow(1.1, storeLib[0].past["boat"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["boat"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 13000000
                       },
                       {
                         locked: (storeLib[0].upgrade["boat"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 17000000
                       },
                       {
                         locked: (storeLib[0].upgrade["boat"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 24000000
                       }
                     ]
                   },
                   {
                     name: "Photography",
                     amount: storeLib[0].past["photography"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["photography"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["photography"])),
+                    basePrice: 27000000,
+                    inflation: 1.1,
+                    baseRemuneration: 30000,
+                    remuneration: 30000 * storeLib[0].past["photography"],
+                    price: 27000000 * Math.pow(1.1, storeLib[0].past["photography"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["photography"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 35000000
                       },
                       {
                         locked: (storeLib[0].upgrade["photography"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 45000000
                       },
                       {
                         locked: (storeLib[0].upgrade["photography"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 60000000
                       }
                     ]
                   },
                   {
                     name: "Train",
                     amount: storeLib[0].past["train"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["train"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["train"])),
+                    basePrice: 112000000,
+                    inflation: 1.1,
+                    baseRemuneration: 90000,
+                    remuneration: 90000 * storeLib[0].past["train"],
+                    price: 112000000 * Math.pow(1.1, storeLib[0].past["train"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["train"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 145000000
                       },
                       {
                         locked: (storeLib[0].upgrade["train"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 190000000
                       },
                       {
                         locked: (storeLib[0].upgrade["train"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 240000000
                       }
                     ]
                   },
                   {
                     name: "Electricity",
                     amount: storeLib[0].past["electricity"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].past["electricity"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].past["electricity"])),
+                    basePrice: 460000000,
+                    inflation: 1.1,
+                    baseRemuneration: 310000,
+                    remuneration: 310000 * storeLib[0].past["electricity"],
+                    price: 460000000 * Math.pow(1.1, storeLib[0].past["electricity"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["electricity"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 550000000
                       },
                       {
                         locked: (storeLib[0].upgrade["electricity"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 650000000
                       },
                       {
                         locked: (storeLib[0].upgrade["electricity"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 820000000
                       }
                     ]
                   },
                   {
                     name: "Phone",
                     amount: storeLib[0].present["phone"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].present["phone"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["phone"])),
+                    basePrice: 1000000000,
+                    inflation: 1.1,
+                    baseRemuneration: 950000,
+                    remuneration: 950000 * storeLib[0].present["phone"],
+                    price: 1000000000 * Math.pow(1.1, storeLib[0].present["phone"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["phone"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 1300000000
                       },
                       {
                         locked: (storeLib[0].upgrade["phone"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 1800000000
                       },
                       {
                         locked: (storeLib[0].upgrade["phone"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 2100000000
                       }
                     ]
                   },
                   {
                     name: "Computer",
                     amount: storeLib[0].present["computer"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].present["computer"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["computer"])),
+                    basePrice: 4500000000,
+                    inflation: 1.1,
+                    baseRemuneration: 2700000,
+                    remuneration: 2700000 * storeLib[0].present["computer"],
+                    price: 4500000000 * Math.pow(1.1, storeLib[0].present["computer"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["computer"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 7777777777
                       },
                       {
                         locked: (storeLib[0].upgrade["computer"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 11200000000
                       },
                       {
                         locked: (storeLib[0].upgrade["computer"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 16000000000
                       }
                     ]
                   },
                   {
                     name: "Disk",
                     amount: storeLib[0].present["disk"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].present["disk"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["disk"])),
+                    basePrice: 22000000000,
+                    inflation: 1.1,
+                    baseRemuneration: 5000000,
+                    remuneration: 5000000 * storeLib[0].present["disk"],
+                    price: 22000000000 * Math.pow(1., storeLib[0].present["disk"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["disk"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 28000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["disk"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2.5,
+                        price: 68000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["disk"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 5,
+                        price: 555123456789
                       }
                     ]
                   },
                   {
                     name: "Coca",
                     amount: storeLib[0].present["coca"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].present["coca"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["coca"])),
+                    basePrice: 90000000000,
+                    inflation: 1.1,
+                    baseRemuneration: 21000000,
+                    remuneration: (21000000 * storeLib[0].present["coca"]),
+                    price: (90000000000 * Math.pow(1.1, storeLib[0].present["coca"])),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["coca"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 120000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["coca"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 160000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["coca"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 195000000000
                       }
                     ]
                   },
                   {
                     name: "Games",
                     amount: storeLib[0].present["games"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].present["games"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["games"])),
+                    basePrice: 350000000000,
+                    inflation: 1.1,
+                    baseRemuneration: 89000000,
+                    remuneration: (89000000 * storeLib[0].present["games"]),
+                    price: (350000000000 * Math.pow(1.1, storeLib[0].present["games"])),
                     multiplier: 1,
                     upgrades: [
                       {
@@ -650,135 +650,135 @@ export default {
                   {
                     name: "Rocket",
                     amount: storeLib[0].present["rocket"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].present["rocket"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["rocket"])),
+                    basePrice: 1175000000000,
+                    inflation: 1.1,
+                    baseRemuneration: 334000000,
+                    remuneration: (334000000 * storeLib[0].present["rocket"]),
+                    price: (1175000000000 * Math.pow(1.25, storeLib[0].present["rocket"])),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["rocket"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 1500000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["rocket"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 2121212212212
                       },
                       {
                         locked: (storeLib[0].upgrade["rocket"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 12,
+                        price: 30000000000000
                       }
                     ]
                   },
                   {
                     name: "Covid",
                     amount: storeLib[0].present["covid"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].present["covid"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["covid"])),
+                    basePrice: 1900000000000,
+                    inflation: 1.1,
+                    baseRemuneration: -334000000,
+                    remuneration: -334000000 * storeLib[0].present["covid"],
+                    price: 1900000000000 * Math.pow(1.1, storeLib[0].present["covid"]),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["covid"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: -5,
+                        price: 3900000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["covid"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 5500000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["covid"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 8000000000000
                       }
                     ]
                   },
                   {
                     name: "Dolorean",
                     amount: storeLib[0].futur["dolorean"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].futur["dolorean"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].futur["dolorean"])),
+                    basePrice: 17696000000021,
+                    inflation: 1.1,
+                    baseRemuneration: 4206900000,
+                    remuneration: (4206900000 * storeLib[0].futur["dolorean"]),
+                    price: (17696000000021 * Math.pow(1.1, storeLib[0].futur["dolorean"])),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["dolorean"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 23000000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["dolorean"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 29000000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["dolorean"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 34000000000000
                       }
                     ]
                   },
                   {
                     name: "Motherboard",
                     amount: storeLib[0].futur["motherboard"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].futur["motherboard"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].futur["motherboard"])),
+                    basePrice: 29999999999999,
+                    inflation: 1.1,
+                    baseRemuneration: 10000000000,
+                    remuneration: (10000000000 * storeLib[0].futur["motherboard"]),
+                    price: (29999999999999 * Math.pow(1.1, storeLib[0].futur["motherboard"])),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["motherboard"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 40000000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["motherboard"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 55000000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["motherboard"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 2,
+                        price: 70000000000000
                       }
                     ]
                   },
                   {
                     name: "Hologram",
                     amount: storeLib[0].futur["hologram"],
-                    basePrice: 10,
-                    inflation: 1.25,
-                    baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].futur["hologram"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].futur["hologram"])),
+                    basePrice: 180000000000000,
+                    inflation: 1.1,
+                    baseRemuneration: 123456789123,
+                    remuneration: (123456789123 * storeLib[0].futur["hologram"]),
+                    price: (180000000000000 * Math.pow(1.1, storeLib[0].futur["hologram"])),
                     multiplier: 1,
                     upgrades: [
                       {
                         locked: (storeLib[0].upgrade["hologram"] <= 0),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 10,
+                        price: 3800000000000000,
                       },
                       {
                         locked: (storeLib[0].upgrade["hologram"] <= 1),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 5,
+                        price: 52000000000000000
                       },
                       {
                         locked: (storeLib[0].upgrade["hologram"] <= 2),
-                        multiplier: 1.5,
-                        price: 300
+                        multiplier: 1000,
+                        price: 99999999999999999999
                       }
                     ]
                   },

@@ -6,7 +6,7 @@
         <h3>{{ this.item }}</h3>
       </b-row>
       <b-row v-if="price">
-        Price {{ Intl.NumberFormat().format(this.price) }}
+        Price {{ Intl.NumberFormat().format(Math.trunc(this.price)) }}
       </b-row>
     </b-col>
     <b-col v-if="this.nbItem">

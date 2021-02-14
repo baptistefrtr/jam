@@ -69,6 +69,17 @@ export default {
       },
     };
   },
+  created() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+        console.log(user.uid);
+        this.initBdd();
+      } else {
+        this.user = null;
+      }
+    });
+  },
   methods: {
     userRegistration() {
       firebase
@@ -88,12 +99,43 @@ export default {
             });
         });
     },
+    initBdd() {
+      const db = this.$firebase.firestore();
+      db.collection("users")
+        .doc(this.user.uid)
+        db.collection("users")
+              .doc(this.user.uid)
+              .set({
+                createdID: this.user.uid,
+                clicks: 0,
+                time: 0,
+                past:  {
+                  flint: 0,
+                  fire: 0,
+                  bow: 0,
+                  town: 0,
+                  wheel: 0,
+                  writing: 0
+                },
+                upgrade: {
+                  flint: 0,
+                  fire: 0,
+                  bow: 0,
+                  wheel: 0,
+                  writing: 0,
+                  town: 0
+                }
+              })
+        .then(() => {
+          this.$router.push("/");
+          location.reload();
+        });
+    },
     googleLogin() {
         const provider = new firebase.auth.GoogleAuthProvider();
 
-        firebase.auth().signInWithRedirect(provider).then(() => {
-            this.$router.push("/");
-        });
+        firebase.auth().signInWithRedirect(provider).then(
+            this.$initBdd());
     }
   },
   mounted() {
@@ -109,6 +151,16 @@ export default {
     const user = firebase.auth().currentUser;
     user.sendEmailVerification().then(() => {
       console.log("Mail envoyé !");
+    });
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+        console.log(user.uid);
+        this.initBdd();
+      } else {
+        this.user = null;
+      }
     });
   },
 };

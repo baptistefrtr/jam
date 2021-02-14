@@ -18,6 +18,8 @@
             {{ Intl.NumberFormat().format(Math.trunc(userData.time)) }} time
             <br>
             per second: {{ Intl.NumberFormat().format(totalRemuneration())  }}
+            <br>
+            per click: {{ Intl.NumberFormat().format(Math.trunc(userData.click.efficiency)) }}
           </h3>
         </b-col>
         <b-col cols="3"></b-col>

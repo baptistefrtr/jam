@@ -115,7 +115,12 @@ export default {
                   bow: 0,
                   town: 0,
                   wheel: 0,
-                  writing: 0
+                  writing: 0,
+                  church: 0,
+                  boat: 0,
+                  photography: 0,
+                  train: 0,
+                  electricity: 0
                 },
                 upgrade: {
                   flint: 0,
@@ -123,7 +128,12 @@ export default {
                   bow: 0,
                   wheel: 0,
                   writing: 0,
-                  town: 0
+                  town: 0,
+                  church: 0,
+                  boat: 0,
+                  photography: 0,
+                  train: 0,
+                  electricity: 0
                 }
               })
         .then(() => {

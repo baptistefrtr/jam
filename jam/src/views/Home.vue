@@ -161,19 +161,15 @@ export default {
     buyItem(item) {
 
       if (this.userData.time >= this.userData.items[item].price) {
-        console.log("ACHAT");
         this.userData.items[item].amount++;
         this.userData.time -= this.userData.items[item].price;
         this.userData.items[item].price = this.userData.items[item].price * this.userData.items[item].inflation;
         this.userData.items[item].remuneration += this.userData.items[item].baseRemuneration;
-      } else
-        console.log("TPAUVRE");
+      }
     },
     buyUpgrade(value) {
       for (let i = 0; i !== this.userData.items[value].upgrades[i]; i++) {
         if (this.userData.items[value].upgrades[i].locked && this.userData.time >= this.userData.items[value].upgrades[i].price) {
-          console.log("ACHAAAAt " + i);
-          console.log(this.userData.items[value].name);
           this.userData.items[value].upgrades[i].locked = false;
           this.userData.items[value].multiplier *= this.userData.items[value].upgrades[i].multiplier;
           this.userData.time -= this.userData.items[value].upgrades[i].price;
@@ -182,8 +178,6 @@ export default {
       }
     },
     upgradeClick() {
-      console.log(this.userData.time);
-      console.log(this.userData.click.price);
       if (this.userData.time >= this.userData.click.price) {
         this.userData.time -= this.userData.click.price
         this.userData.click.level++;
@@ -217,7 +211,6 @@ export default {
       if (user) {
         this.user = user;
         const db = this.$firebase.firestore();
-        console.log(user.uid);
         var storeLib = [];
         db.collection("users")
             .doc(user.uid)
@@ -804,9 +797,6 @@ export default {
                   },
                 ]
               };
-              console.log(this.userData);
-              console.log(this.userData.click.level);
-              console.log(this.userData.click.efficiency);
               this.updateMultiplier(this.userData.items);
               this.counter = storeLib[0].clicks;
             });

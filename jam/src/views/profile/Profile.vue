@@ -42,7 +42,6 @@ export default {
       if (user) {
         this.user = user;
         const db = this.$firebase.firestore();
-        console.log(user.uid);
         var storeLib = [];
         db.collection("users")
           .doc(user.uid)
@@ -70,8 +69,6 @@ export default {
         });
     },
     editUser() {
-        console.log("test du verified");
-        console.log(this.userVerified);
       const db = this.$firebase.firestore();
       db.collection("users")
         .doc(this.user.uid)

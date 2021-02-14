@@ -720,10 +720,8 @@ export default {
     buyItem(value) {
       this.$emit("buyItem", value);
       //   this.userData.past[value]
-      console.log(value);
     },
     buyUpgrade(value) {
-      console.log(value);
       if (value === -1) {
         this.$emit("upgradeClick", -1);
         return;

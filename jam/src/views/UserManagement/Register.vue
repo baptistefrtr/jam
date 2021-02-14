@@ -73,7 +73,6 @@ export default {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.user = user;
-        console.log(user.uid);
         this.initBdd();
       } else {
         this.user = null;
@@ -88,7 +87,6 @@ export default {
         .then((res) => {
           const user = firebase.auth().currentUser;
           user.sendEmailVerification().then(() => {
-            console.log("Mail envoyé !");
           });
           res.user
             .updateProfile({
@@ -185,13 +183,11 @@ export default {
     ui.start("#firebaseui-auth-container", uiConfig);
     const user = firebase.auth().currentUser;
     user.sendEmailVerification().then(() => {
-      console.log("Mail envoyé !");
     });
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.user = user;
-        console.log(user.uid);
         this.initBdd();
       } else {
         this.user = null;

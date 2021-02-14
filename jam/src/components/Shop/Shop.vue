@@ -4,13 +4,13 @@
     <b-row>
       <b-col cols="6">
         <b-list-group style="height: 80vh; overflow-y: scroll; overflow-x: hidden">
-          <b-list-group-item style="padding: 0; border: 0;" v-for="(value, idx) in this.userData.items" :key="idx" >
+          <b-list-group-item style="padding: 0; border: 0; margin-bottom: 15px" v-for="(value, idx) in this.userData.items" :key="idx" >
             <b-button
                 squared
                 block
-                variant="light"
+                variant="outline-secondary"
                 @click="buyItem(idx)"
-                style="padding-top: 0px; padding-bottom: 0px"
+                style="padding-top: 0px; padding-bottom: 0px; border: 0"
             >
               <Item v-if="value.name === 'Flint'"
                     :item="value.name"

@@ -1,9 +1,6 @@
 <template>
 
-  <b-row>
-    <b-col md="auto">
-      <b-img left :src="this.img" width="90" height="90"></b-img>
-    </b-col>
+  <b-row style="padding-left: 5%; padding-top: 2%; padding-bottom: 2%">
     <b-col class="text-left">
       <b-row>
         <h3>{{ this.item }}</h3>
@@ -20,7 +17,7 @@
 
 <script>
 export default {
-  props: ["item", "img", "nbItem", "price"],
+  props: ["item", "nbItem", "price"],
   name: "Item"
 };
 </script>

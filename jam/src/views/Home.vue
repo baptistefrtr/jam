@@ -106,7 +106,12 @@ export default {
                   bow: this.userData.items[2].amount,
                   town: this.userData.items[5].amount,
                   wheel: this.userData.items[3].amount,
-                  writing: this.userData.items[4].amount
+                  writing: this.userData.items[4].amount,
+                  church: this.userData.items[6].amount,
+                  boat: this.userData.items[7].amount,
+                  photography: this.userData.items[8].amount,
+                  train: this.userData.items[9].amount,
+                  electricity: this.userData.items[10].amount
                 },
                 upgrade: {
                   flint: this.getUpgradeLevel(this.userData.items[0]),
@@ -114,7 +119,12 @@ export default {
                   bow: this.getUpgradeLevel(this.userData.items[2]),
                   wheel: this.getUpgradeLevel(this.userData.items[3]),
                   writing: this.getUpgradeLevel(this.userData.items[4]),
-                  town: this.getUpgradeLevel(this.userData.items[5])
+                  town: this.getUpgradeLevel(this.userData.items[5]),
+                  church:  this.getUpgradeLevel(this.userData.items[6]),
+                  boat:  this.getUpgradeLevel(this.userData.items[7]),
+                  photography:  this.getUpgradeLevel(this.userData.items[8]),
+                  train:  this.getUpgradeLevel(this.userData.items[9]),
+                  electricity:  this.getUpgradeLevel(this.userData.items[10])
                 }
               })
         } else

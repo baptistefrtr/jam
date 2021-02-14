@@ -10,42 +10,49 @@
                 block
                 variant="outline-secondary"
                 @click="buyItem(idx)"
+                style="padding-top: 0px; padding-bottom: 0px"
             >
               <Item v-if="value.name === 'Flint'"
                     :item="value.name"
                     :img="require('@/assets/past/fire.png')"
                     :nbItem="value.amount"
                     :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/flintBack.png') + ') '}"
               ></Item>
               <Item v-if="value.name === 'Fire'"
                     :item="value.name"
                     :img="require('@/assets/past/fire.png')"
                     :nbItem="value.amount"
                     :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/fireBack.png') + ') '}"
               ></Item>
               <Item v-if="value.name === 'Bow'"
                     :item="value.name"
                     :img="require('@/assets/past/fire.png')"
                     :nbItem="value.amount"
                     :price="value.price"
+                    style="background-image: url('https://i.pinimg.com/originals/85/4d/cd/854dcd215dbeb47334fdd8024a051954.png');"
               ></Item>
               <Item v-if="value.name === 'Wheel'"
                     :item="value.name"
                     :img="require('@/assets/past/fire.png')"
                     :nbItem="value.amount"
                     :price="value.price"
+                    style="background-image: url('https://i.pinimg.com/originals/af/54/2d/af542d89a7722b3ba7d078247d3314fe.gif');"
               ></Item>
               <Item v-if="value.name === 'Writing'"
                     :item="value.name"
                     :img="require('@/assets/past/fire.png')"
                     :nbItem="value.amount"
                     :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/writingBack.png') + ') '}"
               ></Item>
               <Item v-if="value.name === 'Town'"
                     :item="value.name"
                     :img="require('@/assets/past/fire.png')"
                     :nbItem="value.amount"
                     :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
               ></Item>
             </b-button>
           </b-list-group-item>
@@ -60,6 +67,7 @@
                   :price="value.upgrades[0].price"
                   :index="idx"
                   @buy="buyUpgrade"
+                  style="background-image: url('https://i.pinimg.com/originals/af/54/2d/af542d89a7722b3ba7d078247d3314fe.gif');"
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Flint' && !value.upgrades[0].locked && value.upgrades[1].locked"
                   :item=" value.name + ' 2'"

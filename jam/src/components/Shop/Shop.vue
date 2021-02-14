@@ -222,7 +222,7 @@
             ></Upgrade>
             <Upgrade v-if="value.name === 'Bow' && value.upgrades[0].locked && !(userData.time <value.upgrades[0].price)"
                      :item=" value.name" :level="1"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/bow.png')"
                      :index="idx"
                      :price="value.upgrades[0].price"
                      :multiplier="value.upgrades[0].multiplier"
@@ -230,7 +230,7 @@
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Bow' && !value.upgrades[0].locked && value.upgrades[1].locked && !(userData.time <value.upgrades[1].price)"
                      :item=" value.name" :level="2"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/bow.png')"
                      :price="value.upgrades[1].price"
                      :multiplier="value.upgrades[1].multiplier"
                      :index="idx"
@@ -239,7 +239,7 @@
             <Upgrade
                 v-else-if="value.name === 'Bow' && !value.upgrades[0].locked && !value.upgrades[1].locked && value.upgrades[2].locked && !(userData.time <value.upgrades[2].price)"
                 :item=" value.name" :level="3"
-                :img="require('@/assets/past/fire.png')"
+                :img="require('@/assets/icon/bow.png')"
                 :price="value.upgrades[2].price"
                 :multiplier="value.upgrades[2].multiplier"
                 :index="idx"
@@ -247,7 +247,7 @@
             ></Upgrade>
             <Upgrade v-if="value.name === 'Wheel' && value.upgrades[0].locked && !(userData.time <value.upgrades[0].price)"
                      :item=" value.name" :level="1"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/wheel.png')"
                      :price="value.upgrades[0].price"
                      :multiplier="value.upgrades[0].multiplier"
                      :index="idx"
@@ -255,7 +255,7 @@
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Wheel' && !value.upgrades[0].locked && value.upgrades[1].locked && !(userData.time <value.upgrades[1].price)"
                      :item=" value.name" :level="2"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/wheel.png')"
                      :price="value.upgrades[1].price"
                      :multiplier="value.upgrades[1].multiplier"
                      :index="idx"
@@ -264,7 +264,7 @@
             <Upgrade
                 v-else-if="value.name === 'Wheel' && !value.upgrades[0].locked && !value.upgrades[1].locked && value.upgrades[2].locked && !(userData.time <value.upgrades[2].price)"
                 :item=" value.name" :level="3"
-                :img="require('@/assets/past/fire.png')"
+                :img="require('@/assets/icon/wheel.png')"
                 :price="value.upgrades[2].price"
                 :multiplier="value.upgrades[2].multiplier"
                 :index="idx"
@@ -272,7 +272,7 @@
             ></Upgrade>
             <Upgrade v-if="value.name === 'Writing' && value.upgrades[0].locked && !(userData.time <value.upgrades[0].price)"
                      :item=" value.name" :level="1"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/writing.png')"
                      :price="value.upgrades[0].price"
                      :multiplier="value.upgrades[0].multiplier"
                      :index="idx"
@@ -280,7 +280,7 @@
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Writing' && !value.upgrades[0].locked && value.upgrades[1].locked && !(userData.time <value.upgrades[1].price)"
                      :item=" value.name" :level="2"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/writing.png')"
                      :price="value.upgrades[1].price"
                      :multiplier="value.upgrades[1].multiplier"
                      :index="idx"
@@ -289,7 +289,7 @@
             <Upgrade
                 v-else-if="value.name === 'Writing' && !value.upgrades[0].locked && !value.upgrades[1].locked && value.upgrades[2].locked && !(userData.time <value.upgrades[2].price)"
                 :item=" value.name" :level="3"
-                :img="require('@/assets/past/fire.png')"
+                :img="require('@/assets/icon/writing.png')"
                 :price="value.upgrades[2].price"
                 :multiplier="value.upgrades[2].multiplier"
                 :index="idx"
@@ -297,14 +297,14 @@
             ></Upgrade>
             <Upgrade v-if="value.name === 'Town' && value.upgrades[0].locked && !(userData.time <value.upgrades[0].price)"
                      :item=" value.name" :level="1"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/town.png')"
                      :price="value.upgrades[0].price"
                      :multiplier="value.upgrades[0].multiplier"
                      :index="idx"
                      @buy="buyUpgrade"
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Town' && !value.upgrades[0].locked && value.upgrades[1].locked && !(userData.time <value.upgrades[1].price)"
-                     :item=" value.name" :level="2" :img="require('@/assets/past/fire.png')"
+                     :item=" value.name" :level="2" :img="require('@/assets/icon/town.png')"
                      :price="value.upgrades[1].price"
                      :multiplier="value.upgrades[1].multiplier"
                      :index="idx"
@@ -313,7 +313,7 @@
             <Upgrade
                 v-else-if="value.name === 'Town' && !value.upgrades[0].locked && !value.upgrades[1].locked && value.upgrades[2].locked && !(userData.time <value.upgrades[2].price)"
                 :item=" value.name" :level="3"
-                :img="require('@/assets/past/fire.png')"
+                :img="require('@/assets/icon/town.png')"
                 :price="value.upgrades[2].price"
                 :multiplier="value.upgrades[2].multiplier"
                 :index="idx"
@@ -321,7 +321,7 @@
             ></Upgrade>
             <Upgrade v-if="value.name === 'Church' && value.upgrades[0].locked && !(userData.time <value.upgrades[0].price)"
                      :item=" value.name" :level="1"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/church.png')"
                      :price="value.upgrades[0].price"
                      :multiplier="value.upgrades[0].multiplier"
                      :index="idx"
@@ -329,7 +329,7 @@
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Church' && !value.upgrades[0].locked && value.upgrades[1].locked && !(userData.time <value.upgrades[1].price)"
                      :item=" value.name" :level="2"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/church.png')"
                      :price="value.upgrades[1].price"
                      :multiplier="value.upgrades[1].multiplier"
                      :index="idx"
@@ -338,7 +338,7 @@
             <Upgrade
                 v-else-if="value.name === 'Church' && !value.upgrades[0].locked && !value.upgrades[1].locked && value.upgrades[2].locked && !(userData.time <value.upgrades[2].price)"
                 :item=" value.name" :level="3"
-                :img="require('@/assets/past/fire.png')"
+                :img="require('@/assets/icon/church.png')"
                 :price="value.upgrades[2].price"
                 :multiplier="value.upgrades[2].multiplier"
                 :index="idx"
@@ -346,14 +346,14 @@
             ></Upgrade>
             <Upgrade v-if="value.name === 'Boat' && value.upgrades[0].locked && !(userData.time <value.upgrades[0].price)"
                      :item=" value.name" :level="1"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/boat.png')"
                      :price="value.upgrades[0].price"
                      :multiplier="value.upgrades[0].multiplier"
                      :index="idx"
                      @buy="buyUpgrade"
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Boat' && !value.upgrades[0].locked && value.upgrades[1].locked && !(userData.time <value.upgrades[1].price)"
-                     :item=" value.name" :level="2" :img="require('@/assets/past/fire.png')"
+                     :item=" value.name" :level="2" :img="require('@/assets/icon/boat.png')"
                      :price="value.upgrades[1].price"
                      :multiplier="value.upgrades[1].multiplier"
                      :index="idx"
@@ -362,7 +362,7 @@
             <Upgrade
                 v-else-if="value.name === 'Boat' && !value.upgrades[0].locked && !value.upgrades[1].locked && value.upgrades[2].locked && !(userData.time <value.upgrades[2].price)"
                 :item=" value.name" :level="3"
-                :img="require('@/assets/past/fire.png')"
+                :img="require('@/assets/icon/boat.png')"
                 :price="value.upgrades[2].price"
                 :multiplier="value.upgrades[2].multiplier"
                 :index="idx"

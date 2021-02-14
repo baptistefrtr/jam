@@ -115,7 +115,7 @@ export default {
             present: {
               phone: this.userData.items[11].amount,
               computer: this.userData.items[12].amount,
-              cdRom: this.userData.items[13].amount,
+              disk: this.userData.items[13].amount,
               coca: this.userData.items[14].amount,
               games: this.userData.items[15].amount,
               rocket: this.userData.items[16].amount,
@@ -140,7 +140,7 @@ export default {
               electricity: this.getUpgradeLevel(this.userData.items[10]),
               phone: this.getUpgradeLevel(this.userData.items[11]),
               computer: this.getUpgradeLevel(this.userData.items[12]),
-              cdRom: this.getUpgradeLevel(this.userData.items[13]),
+              disk: this.getUpgradeLevel(this.userData.items[13]),
               coca: this.getUpgradeLevel(this.userData.items[14]),
               games: this.getUpgradeLevel(this.userData.items[15]),
               rocket: this.getUpgradeLevel(this.userData.items[16]),
@@ -567,27 +567,27 @@ export default {
                     ]
                   },
                   {
-                    name: "Cd",
-                    amount: storeLib[0].present["cd"],
+                    name: "Disk",
+                    amount: storeLib[0].present["disk"],
                     basePrice: 10,
                     inflation: 1.25,
                     baseRemuneration: 3,
-                    remuneration: Math.trunc(3 * storeLib[0].present["cdRom"]),
-                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["cdRom"])),
+                    remuneration: Math.trunc(3 * storeLib[0].present["disk"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["disk"])),
                     multiplier: 1,
                     upgrades: [
                       {
-                        locked: (storeLib[0].upgrade["cdRom"] <= 0),
+                        locked: (storeLib[0].upgrade["disk"] <= 0),
                         multiplier: 1.5,
                         price: 300
                       },
                       {
-                        locked: (storeLib[0].upgrade["cdRom"] <= 1),
+                        locked: (storeLib[0].upgrade["disk"] <= 1),
                         multiplier: 1.5,
                         price: 300
                       },
                       {
-                        locked: (storeLib[0].upgrade["cdRom"] <= 2),
+                        locked: (storeLib[0].upgrade["disk"] <= 2),
                         multiplier: 1.5,
                         price: 300
                       }

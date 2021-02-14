@@ -125,7 +125,7 @@ export default {
                 present: {
                   phone: 0,
                   computer: 0,
-                  cdRom: 0,
+                  disk: 0,
                   coca: 0,
                   games: 0,
                   rocket: 0,
@@ -150,7 +150,7 @@ export default {
                   electricity: 0,
                   phone: 0,
                   computer: 0,
-                  cdRom: 0,
+                  disk: 0,
                   coca: 0,
                   games: 0,
                   rocket: 0,

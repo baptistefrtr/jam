@@ -120,7 +120,21 @@ export default {
                   boat: 0,
                   photography: 0,
                   train: 0,
-                  electricity: 0
+                  electricity: 0,
+                },
+                present: {
+                  phone: 0,
+                  computer: 0,
+                  cdRom: 0,
+                  coca: 0,
+                  games: 0,
+                  rocket: 0,
+                  covid: 0,
+                },
+                futur: {
+                  dolorean: 0,
+                  motherboard: 0,
+                  hologram: 0,
                 },
                 upgrade: {
                   flint: 0,
@@ -133,7 +147,17 @@ export default {
                   boat: 0,
                   photography: 0,
                   train: 0,
-                  electricity: 0
+                  electricity: 0,
+                  phone: 0,
+                  computer: 0,
+                  cdRom: 0,
+                  coca: 0,
+                  games: 0,
+                  rocket: 0,
+                  covid: 0,
+                  dolorean: 0,
+                  motherboard: 0,
+                  hologram: 0,
                 }
               })
         .then(() => {

@@ -112,6 +112,20 @@ export default {
               train: this.userData.items[9].amount,
               electricity: this.userData.items[10].amount
             },
+            present: {
+              phone: this.userData.items[11].amount,
+              computer: this.userData.items[12].amount,
+              cdRom: this.userData.items[13].amount,
+              coca: this.userData.items[14].amount,
+              games: this.userData.items[15].amount,
+              rocket: this.userData.items[16].amount,
+              covid: this.userData.items[17].amount,
+            },
+            futur: {
+              dolorean: this.userData.items[18].amount,
+              motherboard: this.userData.items[19].amount,
+              hologram: this.userData.items[20].amount,
+            },
             upgrade: {
               flint: this.getUpgradeLevel(this.userData.items[0]),
               fire: this.getUpgradeLevel(this.userData.items[1]),
@@ -123,7 +137,17 @@ export default {
               boat: this.getUpgradeLevel(this.userData.items[7]),
               photography: this.getUpgradeLevel(this.userData.items[8]),
               train: this.getUpgradeLevel(this.userData.items[9]),
-              electricity: this.getUpgradeLevel(this.userData.items[10])
+              electricity: this.getUpgradeLevel(this.userData.items[10]),
+              phone: this.getUpgradeLevel(this.userData.items[11]),
+              computer: this.getUpgradeLevel(this.userData.items[12]),
+              cdRom: this.getUpgradeLevel(this.userData.items[13]),
+              coca: this.getUpgradeLevel(this.userData.items[14]),
+              games: this.getUpgradeLevel(this.userData.items[15]),
+              rocket: this.getUpgradeLevel(this.userData.items[16]),
+              covid: this.getUpgradeLevel(this.userData.items[17]),
+              dolorean: this.getUpgradeLevel(this.userData.items[18]),
+              motherboard: this.getUpgradeLevel(this.userData.items[19]),
+              hologram: this.getUpgradeLevel(this.userData.items[20]),
             }
           })
       this.dismissCountDown = this.dismissSecs;
@@ -487,7 +511,277 @@ export default {
                         price: 300
                       }
                     ]
-                  }
+                  },
+                  {
+                    name: "Phone",
+                    amount: storeLib[0].present["phone"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].present["phone"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["phone"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["phone"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["phone"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["phone"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Computer",
+                    amount: storeLib[0].present["computer"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].present["computer"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["computer"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["computer"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["computer"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["computer"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Cd",
+                    amount: storeLib[0].present["cd"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].present["cdRom"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["cdRom"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["cdRom"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["cdRom"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["cdRom"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Coca",
+                    amount: storeLib[0].present["coca"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].present["coca"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["coca"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["coca"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["coca"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["coca"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Games",
+                    amount: storeLib[0].present["games"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].present["games"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["games"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["games"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["games"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["games"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Rocket",
+                    amount: storeLib[0].present["rocket"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].present["rocket"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["rocket"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["rocket"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["rocket"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["rocket"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Covid",
+                    amount: storeLib[0].present["covid"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].present["covid"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].present["covid"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["covid"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["covid"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["covid"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Dolorean",
+                    amount: storeLib[0].futur["dolorean"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].futur["dolorean"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].futur["dolorean"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["dolorean"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["dolorean"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["dolorean"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Motherboard",
+                    amount: storeLib[0].futur["motherboard"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].futur["motherboard"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].futur["motherboard"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["motherboard"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["motherboard"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["motherboard"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
+                  {
+                    name: "Hologram",
+                    amount: storeLib[0].futur["hologram"],
+                    basePrice: 10,
+                    inflation: 1.25,
+                    baseRemuneration: 3,
+                    remuneration: Math.trunc(3 * storeLib[0].futur["hologram"]),
+                    price: Math.trunc(10 * Math.pow(1.25, storeLib[0].futur["hologram"])),
+                    multiplier: 1,
+                    upgrades: [
+                      {
+                        locked: (storeLib[0].upgrade["hologram"] <= 0),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["hologram"] <= 1),
+                        multiplier: 1.5,
+                        price: 300
+                      },
+                      {
+                        locked: (storeLib[0].upgrade["hologram"] <= 2),
+                        multiplier: 1.5,
+                        price: 300
+                      }
+                    ]
+                  },
                 ]
               };
               console.log(this.userData);

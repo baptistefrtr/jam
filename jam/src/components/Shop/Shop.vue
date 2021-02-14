@@ -89,6 +89,55 @@
                     :price="value.price"
                     v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
               ></Item>
+              <Item v-if="value.name === 'Phone'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Computer'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Cd'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Coca'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Games'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Rocket'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
+              <Item v-if="value.name === 'Covid'"
+                    :item="value.name"
+                    :img="require('@/assets/past/fire.png')"
+                    :nbItem="value.amount"
+                    :price="value.price"
+                    v-bind:style="{ backgroundImage: 'url(' + require('@/assets/past/townBack.png') + ') '}"
+              ></Item>
             </b-button>
           </b-list-group-item>
         </b-list-group>

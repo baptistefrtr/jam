@@ -7,41 +7,9 @@
         <form @submit.prevent="userRegistration">
           <h3>Sign Up</h3>
           <br />
-          <button @click="googleLogin()" class="btn btn-success btn-lg btn-block">Sign in with Google</button>
+          <button @click="googleLogin()" class="btn btn-success btn-lg btn-block">Register with Google</button>
           <br />
           <br />
-
-          <div class="form-group">
-            <label>Name</label>
-            <input
-              type="text"
-              class="form-control form-control-lg"
-              v-model="user.name"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>Email</label>
-            <input
-              type="email"
-              class="form-control form-control-lg"
-              v-model="user.email"
-            />
-          </div>
-
-          <div class="form-group">
-            <label>Password</label>
-            <input
-              type="password"
-              class="form-control form-control-lg"
-              v-model="user.password"
-            />
-          </div>
-
-          <button type="submit" class="btn btn-dark btn-lg btn-block">
-            Sign Up
-          </button>
-
           <p class="forgot-password text-right">
             Already registered
             <router-link to="/login">sign in?</router-link>

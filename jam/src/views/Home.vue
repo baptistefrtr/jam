@@ -804,7 +804,7 @@ export default {
         this.user = null;
       }
     });
-    setInterval(() => this.editUser(), 1 * 600000);
+    setInterval(() => this.editUser(), 1 * 120000);
     setInterval(() => this.payday(), 1000);
   },
 };

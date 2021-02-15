@@ -3,7 +3,7 @@
     <b-col cols="4" class="back" style="padding-top: 10%">
       <b-row>
         <b-alert
-      style="position: absolute; top: 95%; left: 5%"
+      style="position: absolute; top: 2%; left: 5%"
       :show="dismissCountDown"
       dismissible
       variant="warning"
@@ -37,8 +37,8 @@
         ></b-img></b-col>
         <b-col>
       <Shop v-if="this.userData != null" :userData="this.userData" @buyItem="buyItem" @buyUpgrade="buyUpgrade" @upgradeClick="upgradeClick" />
-      <button type="button" class="btn btn-primary" @click="editUser() && showAlert()">
-        Edit user
+      <button type="button" class="btn btn-primary" @click="editUser() && showAlert()" style="position: absolute; top: 2%; left: 94%">
+        Save
       </button>
         </b-col>
       </b-row>

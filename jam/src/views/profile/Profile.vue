@@ -49,15 +49,15 @@
       <b-row style="text-align: left">
         <br><br><br><br>
         <b-col cols="6">
-          <p>Number of flint: {{ testDocument[0].present.rocket }}</p>
-          <p>Number of flint: {{ testDocument[0].present.covid }}</p>
-          <p>Number of flint: {{ testDocument[0].present.disk }}</p>
-          <p>Number of flint: {{ testDocument[0].present.computer }}</p>
+          <p>Number of rocket: {{ testDocument[0].present.rocket }}</p>
+          <p>Number of covid: {{ testDocument[0].present.covid }}</p>
+          <p>Number of disk: {{ testDocument[0].present.disk }}</p>
+          <p>Number of computer: {{ testDocument[0].present.computer }}</p>
         </b-col>
         <b-col cols="6">
-          <p>Number of flint: {{ testDocument[0].present.phone }}</p>
-          <p>Number of flint: {{ testDocument[0].present.games }}</p>
-          <p>Number of flint: {{ testDocument[0].present.coca }}</p>
+          <p>Number of phone: {{ testDocument[0].present.phone }}</p>
+          <p>Number of games: {{ testDocument[0].present.games }}</p>
+          <p>Number of coca: {{ testDocument[0].present.coca }}</p>
         </b-col>
       </b-row>
       <b-row style="text-align: left">
@@ -68,11 +68,11 @@
       <b-row style="text-align: left">
         <br><br><br><br>
         <b-col cols="6">
-          <p>Number of flint: {{ testDocument[0].futur.motherboard }}</p>
-          <p>Number of flint: {{ testDocument[0].futur.hologram }}</p>
+          <p>Number of motherboard: {{ testDocument[0].futur.motherboard }}</p>
+          <p>Number of hologram: {{ testDocument[0].futur.hologram }}</p>
         </b-col>
         <b-col cols="6">
-          <p>Number of flint: {{ testDocument[0].futur.dolorean }}</p>
+          <p>Number of dolorean: {{ testDocument[0].futur.dolorean }}</p>
         </b-col>
       </b-row>
       <b-row style="text-align: left">

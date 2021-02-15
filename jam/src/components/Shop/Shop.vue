@@ -645,7 +645,7 @@
             ></Upgrade>
             <Upgrade v-if="value.name === 'Motherboard' && value.upgrades[0].locked && !(userData.time <value.upgrades[0].price)"
                      :item=" value.name" :level="1"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/motherboard.png')"
                      :price="value.upgrades[0].price"
                      :multiplier="value.upgrades[0].multiplier"
                      :index="idx"
@@ -653,7 +653,7 @@
             ></Upgrade>
             <Upgrade v-else-if="value.name === 'Motherboard' && !value.upgrades[0].locked && value.upgrades[1].locked && !(userData.time <value.upgrades[1].price)"
                      :item=" value.name" :level="2"
-                     :img="require('@/assets/past/fire.png')"
+                     :img="require('@/assets/icon/motherboard.png')"
                      :price="value.upgrades[1].price"
                      :multiplier="value.upgrades[1].multiplier"
                      :index="idx"
@@ -662,7 +662,7 @@
             <Upgrade
                 v-else-if="value.name === 'Motherboard' && !value.upgrades[0].locked && !value.upgrades[1].locked && value.upgrades[2].locked && !(userData.time <value.upgrades[2].price)"
                 :item=" value.name" :level="3"
-                :img="require('@/assets/past/fire.png')"
+                :img="require('@/assets/icon/motherboard.png')"
                 :price="value.upgrades[2].price"
                 :multiplier="value.upgrades[2].multiplier"
                 :index="idx"

@@ -1,8 +1,10 @@
 <template>
-  <b-container v-if="this.userData">
-    <h1>Store</h1>
+  <b-container v-if="this.userData" style="margin-top: 15px;">
     <b-row>
       <b-col cols="9">
+        <h3 style="color: white">
+          Items
+        </h3>
         <b-list-group style="height: 80vh; overflow-y: scroll; overflow-x: hidden">
           <b-list-group-item style="padding: 0; border: 0; margin-bottom: 15px"
                              v-for="(value, idx) in this.userData.items" :key="idx">
@@ -165,6 +167,9 @@
         </b-list-group>
       </b-col>
       <b-col cols="3">
+        <h3  style="color: white">
+          Upgrades
+        </h3>
         <div style="height: 80vh; overflow-y: scroll; overflow-x: hidden">
           <Upgrade :img="require('@/assets/player.png')" item="click strength" :price="this.userData.click.price" :multiplier="2" :index="-1" @buy="buyUpgrade">
 
